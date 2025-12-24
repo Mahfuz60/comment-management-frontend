@@ -90,18 +90,6 @@ Follow these steps to set up the project locally.
     npm run dev
     ```
 
-## ⚙️ Configuration
-
-The application is configured via environment variables.
-
-| Variable              | Description                  | Options / Default                      |
-| :-------------------- | :--------------------------- | :------------------------------------- |
-| `VITE_API_BASE_URL`   | Base URL for the backend API | **Required**                           |
-| `VITE_AUTH_MODE`      | Authentication mechanism     | `cookie` (HttpOnly), `header` (Bearer) |
-| `VITE_ENABLE_SOCKET`  | Enable real-time features    | `true`, `false`                        |
-| `VITE_SOCKET_URL`     | Socket.io server URL         | Required if socket is enabled          |
-| `VITE_ENABLE_REPLIES` | Enable threaded replies      | `true`, `false`                        |
-
 ## 📂 Project Structure
 
 ```
@@ -136,4 +124,5 @@ The frontend expects the backend to adhere to the following contract:
 ---
 
 Made with ❤️ by Myself
+
 # comment-management-frontend
