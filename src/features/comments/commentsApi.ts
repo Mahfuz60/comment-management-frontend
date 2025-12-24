@@ -47,9 +47,11 @@ function applyReactionOptimistic(
   };
 }
 
+import { env } from "@/utils/env";
+
 export const commentsApi = createApi({
   reducerPath: "commentsApi",
-  baseQuery: axiosBaseQuery(),
+  baseQuery: axiosBaseQuery({ baseUrl: env.API_BASE_URL }),
   tagTypes: ["Comments"],
   endpoints: (builder) => ({
     getComments: builder.query<
@@ -182,7 +184,6 @@ export const commentsApi = createApi({
               sort: ui.sort,
             },
             (draft) => {
-              
               let c = draft.data.find((x) => x._id === arg.id);
               if (c) {
                 c.content = arg.body.content;

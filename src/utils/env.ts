@@ -4,7 +4,7 @@ const raw = import.meta.env as Record<string, string | undefined>;
 
 export const env = {
   API_BASE_URL: raw.VITE_API_BASE_URL ?? "",
-  AUTH_MODE: (raw.VITE_AUTH_MODE ?? "cookie") as AuthMode,
+  AUTH_MODE: (raw.VITE_AUTH_MODE ?? "header") as AuthMode,
   ENABLE_SOCKET: (raw.VITE_ENABLE_SOCKET ?? "false") === "true",
   SOCKET_URL:
     raw.VITE_SOCKET_URL ?? raw.VITE_API_BASE_URL ?? "http://localhost:4000",

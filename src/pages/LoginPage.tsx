@@ -41,12 +41,21 @@ export function LoginPage() {
         password,
       }).unwrap();
 
-      if ((res as any)?.token) {
-        dispatch(setToken((res as any).token));
+      // Check if we got the token
+      const token = (res as any)?.token;
+      if (token) {
+        dispatch(setToken(token));
       }
 
-      const meRes = await triggerMe().unwrap();
-      dispatch(setUser((meRes as any).user ?? meRes));
+      // If the response already has the user, use it.
+      // Otherwise fetch it with triggerMe().
+      const user = (res as any)?.user;
+      if (user) {
+        dispatch(setUser(user));
+      } else {
+        const meRes = await triggerMe().unwrap();
+        dispatch(setUser((meRes as any).user ?? meRes));
+      }
 
       toast.success("Logged in");
       navigate("/comments/post/", { replace: true });

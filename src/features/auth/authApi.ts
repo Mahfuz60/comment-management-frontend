@@ -1,4 +1,3 @@
-
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { axiosBaseQuery } from "@/app/api/axiosBaseQuery";
 import type {
@@ -8,9 +7,11 @@ import type {
   RegisterRequest,
 } from "./types";
 
+import { env } from "@/utils/env";
+
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: axiosBaseQuery(),
+  baseQuery: axiosBaseQuery({ baseUrl: env.API_BASE_URL }),
   tagTypes: ["Me"],
   endpoints: (builder) => ({
     me: builder.query<{ user: User }, void>({
