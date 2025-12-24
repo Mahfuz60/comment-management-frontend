@@ -1,0 +1,89 @@
+@use "@/styles/variables" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.2s $ease-spring;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+
+.md {
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.sm {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: $radius-sm;
+}
+
+
+.primary {
+  background: $primary;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba($primary, 0.3), 0 2px 4px -1px rgba($primary, 0.2);
+
+  &:hover:not(:disabled) {
+    background: $primary-hover;
+    box-shadow: 0 6px 8px -1px rgba($primary, 0.4);
+    transform: translateY(-1px);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.secondary {
+  background: #ffffff;
+  color: $text-main;
+  border-color: $border-light;
+  box-shadow: $shadow-sm;
+
+  &:hover:not(:disabled) {
+    background: $bg-app;
+    border-color: $border-hover;
+  }
+}
+
+.danger {
+  background: $danger;
+  color: #ffffff;
+  
+  &:hover:not(:disabled) {
+    background: $danger-hover;
+    box-shadow: 0 4px 12px rgba($danger, 0.3);
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: $text-muted;
+
+  &:hover:not(:disabled) {
+    background: rgba(0,0,0,0.04);
+    color: $text-main;
+  }
+}

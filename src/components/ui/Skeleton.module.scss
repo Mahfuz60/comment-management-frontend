@@ -1,0 +1,10 @@
+.skel {
+  background: linear-gradient(90deg, #efefef, #f7f7f7, #efefef);
+  background-size: 200% 100%;
+  animation: shimmer 1.1s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

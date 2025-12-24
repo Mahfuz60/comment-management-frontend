@@ -1,0 +1,45 @@
+@use "@/styles/variables" as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: $text-main;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid $border-light;
+  background: $bg-input;
+  border-radius: $radius-md;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: $text-main;
+  transition: all 0.2s ease;
+  outline: none;
+
+  &::placeholder {
+    color: $text-light;
+  }
+
+  &:hover {
+    border-color: $border-hover;
+  }
+
+  &:focus {
+    background: #fff;
+    border-color: $primary;
+    box-shadow: 0 0 0 4px rgba($primary, 0.1);
+  }
+}
+
+.error {
+  font-size: 0.8125rem;
+  color: $danger;
+  margin-top: 0.25rem;
+}

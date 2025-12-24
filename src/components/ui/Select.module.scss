@@ -1,0 +1,35 @@
+@use "@/styles/variables" as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $text-muted;
+}
+
+.select {
+  border: 1px solid $border-light;
+  border-radius: $radius-md;
+  padding: 0.5rem 0.75rem;
+  background: $bg-input;
+  font-size: 0.875rem;
+  color: $text-main;
+  outline: none;
+  cursor: pointer;
+  background-color: aliceblue;
+  font-weight: 500;
+  
+  &:hover {
+    border-color: $border-hover;
+  }
+  
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+  }
+}

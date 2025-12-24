@@ -1,0 +1,59 @@
+@use "@/styles/variables" as *;
+
+.form {
+  border: 1px solid $border-light;
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: $shadow-sm;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: $border-focus;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+  }
+}
+
+.textarea {
+  resize: vertical;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  outline: none;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: $text-main;
+  min-height: 3rem;
+
+  &::placeholder {
+    color: $text-light;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid rgba($border-light, 0.5);
+  padding-top: 0.75rem;
+}
+
+.left { min-height: 1.125rem; }
+
+.hint { 
+  font-size: 0.75rem; 
+  color: $text-light; 
+}
+
+.error { 
+  font-size: 0.75rem; 
+  color: $danger; 
+  font-weight: 500; 
+}
+
+.actions { display: flex; gap: 0.5rem; }
