@@ -1,10 +1,9 @@
-
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 type QueryArgs = {
   url: string;
-  method: AxiosRequestConfig["method"];
+  method: string;
   data?: AxiosRequestConfig["data"];
   params?: AxiosRequestConfig["params"];
   headers?: AxiosRequestConfig["headers"];
@@ -27,10 +26,10 @@ export const axiosBaseQuery =
         method,
         data,
         params,
-        withCredentials: true, 
+        withCredentials: true,
         headers: {
           ...(headers || {}),
-          ...(token ? { Authorization: `Bearer ${token}` } : {}), 
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
       });
 
@@ -39,7 +38,9 @@ export const axiosBaseQuery =
       const err = error as AxiosError<any>;
       return {
         error: {
-          status: err.response?.status,
+          ...(err.response?.status !== undefined && {
+            status: err.response?.status,
+          }),
           data: err.response?.data ?? { message: err.message },
         },
       };
