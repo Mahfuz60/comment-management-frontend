@@ -51,11 +51,19 @@ export function LoginPage() {
       toast.success("Logged in");
       navigate("/comments/post/", { replace: true });
     } catch (err: any) {
-      const msg =
-        err?.data?.message ||
-        err?.data?.error ||
-        err?.message ||
-        "Login failed";
+      let msg = "Login failed";
+      if (typeof err?.data?.message === "string") {
+        msg = err.data.message;
+      } else if (typeof err?.data?.error === "string") {
+        msg = err.data.error;
+      } else if (
+        err?.data?.error?.message &&
+        typeof err.data.error.message === "string"
+      ) {
+        msg = err.data.error.message;
+      } else if (err?.message) {
+        msg = err.message;
+      }
 
       const userFriendlyMsg = msg.toLowerCase().includes("invalid credentials")
         ? "Incorrect email or password."

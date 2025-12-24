@@ -44,11 +44,20 @@ export function SignupPage() {
       toast.success("Signup successful. Please login.");
       navigate(`/login?email=${encodeURIComponent(email)}`);
     } catch (err: any) {
-      const msg =
-        err?.data?.message ||
-        err?.data?.error ||
-        err?.message ||
-        "Signup failed";
+      let msg = "Signup failed";
+      if (typeof err?.data?.message === "string") {
+        msg = err.data.message;
+      } else if (typeof err?.data?.error === "string") {
+        msg = err.data.error;
+      } else if (
+        err?.data?.error?.message &&
+        typeof err.data.error.message === "string"
+      ) {
+        msg = err.data.error.message;
+      } else if (err?.message) {
+        msg = err.message;
+      }
+
       toast.error(msg);
       setValidationError(msg);
     }
