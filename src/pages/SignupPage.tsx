@@ -62,7 +62,7 @@ export function SignupPage() {
         <form onSubmit={onSubmit} className={styles.form}>
           {validationError && (
             <div style={{ marginBottom: 16 }}>
-              <Alert title="Validation Error" message={validationError} />
+              <Alert title="Signup Failed" message={validationError} />
             </div>
           )}
           <Input

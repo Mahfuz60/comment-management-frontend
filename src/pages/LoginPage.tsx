@@ -56,8 +56,13 @@ export function LoginPage() {
         err?.data?.error ||
         err?.message ||
         "Login failed";
-      toast.error(msg);
-      setValidationError(msg);
+
+      const userFriendlyMsg = msg.toLowerCase().includes("invalid credentials")
+        ? "Incorrect email or password."
+        : msg;
+
+      toast.error(userFriendlyMsg);
+      setValidationError(userFriendlyMsg);
     }
   }
 
@@ -69,7 +74,7 @@ export function LoginPage() {
         <form onSubmit={onSubmit} className={styles.form}>
           {validationError && (
             <div style={{ marginBottom: 16 }}>
-              <Alert title="Validation Error" message={validationError} />
+              <Alert title="Login Failed" message={validationError} />
             </div>
           )}
           <Input
